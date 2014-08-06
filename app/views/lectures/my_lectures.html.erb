@@ -1,0 +1,12 @@
+<h1>Mis Clases</h1>
+
+<ul class="my_lectures_list">
+	<% for lecture in @lectures %>
+	<ul>
+	<li> <%= link_to "#{lecture.course_name}", edit_lecture_path(lecture) %></li>
+
+	
+	</ul>
+	<% end %>
+	<ul>
+

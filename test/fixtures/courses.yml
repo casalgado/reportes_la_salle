@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  program: MyString
+  name: MyString
+  semester: 1
+  duration: 1
+  credits: 1
+  area: MyString
+
+two:
+  program: MyString
+  name: MyString
+  semester: 1
+  duration: 1
+  credits: 1
+  area: MyString

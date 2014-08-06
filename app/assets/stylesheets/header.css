@@ -1,0 +1,30 @@
+
+.navbar {
+	width: 940px;
+	margin: 10px;
+	border: 2px solid black;
+	overflow: auto;
+	width: 100%;
+}
+
+.navbar ul {
+	height: 15px;
+	margin-bottom: auto;
+	margin-top: auto;
+}
+
+.navbar li {
+	display: inline;
+}
+
+.navbar-left {
+  float: left;
+  width: 720px;
+  margin: 10px;
+}
+
+.navbar-right {
+  float: left;
+  width: 200px;
+  margin: 10px;
+}
