@@ -1,12 +1,14 @@
 <h1>Mis Clases</h1>
 
-<ul class="my_lectures_list">
-	<% for lecture in @lectures %>
-	<ul>
-	<li> <%= link_to "#{lecture.course_name}", edit_lecture_path(lecture) %></li>
+<ul>
 
-	
-	</ul>
+	<% for lecture in @lectures %>
+		<ul class="my-lectures-container">
+		<li class="my-lectures-name"> <%= link_to "#{lecture.course_name}", edit_lecture_path(lecture) %></li>
+		<li class="my-lectures"> <%= Date::DAYNAMES[lecture.week_day] %></li>
+		<li class="my-lectures"> <%= lecture.lecture_start_time.strftime("%I:%M %p") %></li>
+		</ul>
 	<% end %>
+	
 	<ul>
 

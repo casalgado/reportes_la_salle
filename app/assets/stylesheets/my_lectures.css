@@ -1,0 +1,19 @@
+
+
+.my-lectures-container {
+	width: 400px;
+	overflow: auto;
+	width: 100%;
+}
+
+.my-lectures-name {
+	float: left;
+  width: 300px;
+  margin: 1px 10px 1px 10px;
+}
+
+.my-lectures {
+	float: left;
+  width: 80px;
+  margin: 1px 10px 1px 10px;
+}

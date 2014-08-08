@@ -1,0 +1,14 @@
+<h1>Reprogramar Clase</h1>
+
+	
+
+	<%= form_for @lecture_day do |f| %>
+
+	<%= f.label :date_of_lecture %>
+  <%= f.date_select :date_of_lecture %>
+
+	<%= f.label :time_of_lecture %>
+	<%= f.time_select :time_of_lecture, {:minute_step => 30, ampm: true} %>
+
+	<%= f.submit %>
+	<% end %>

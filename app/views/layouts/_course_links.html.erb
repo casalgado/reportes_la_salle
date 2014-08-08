@@ -4,10 +4,10 @@
   <%= link_to('Agregar Clase', new_lecture_path) %>        
   </li>
   <li>
-  <%= link_to("Mis Clases", my_lectures_lectures_path) %>
+  <%= link_to("Mis Clases", my_lectures_lecture_path(current_user)) %>
   </li>
     <li>
-  <%= link_to("Calendario", '#') %>
+  <%= link_to("Reportes", my_reports_lecture_path(current_user)) %>
   </li>
 
 <% else %>

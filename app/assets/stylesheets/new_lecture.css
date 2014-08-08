@@ -1,0 +1,22 @@
+
+.programs-mini-header-months, .programs-mini-header {
+	width: 48em;
+	padding: 7px;
+	text-align: center;
+	margin: 10px auto 10px auto;
+	border-top: 1px solid darkgrey;
+	border-bottom: 1px solid darkgrey;
+
+}
+
+.programs-mini-navs ul {
+	margin: 10px auto 10px auto;
+}
+
+.program-field select {
+	width: 220px;
+}
+
+.form-for-new {
+	margin-top: 45px;
+}

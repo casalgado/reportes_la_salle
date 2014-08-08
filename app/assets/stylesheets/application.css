@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+a:link, a:visited, a:active {
+  color: #333333;
+  text-decoration: none;
+}
 
 body {
 	font-family: Helvetica;

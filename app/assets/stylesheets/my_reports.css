@@ -1,0 +1,64 @@
+
+.day_of_lecture_container {
+	width: 500px;
+	overflow: auto;
+	width: 100%;
+}
+
+.day_of_lecture {
+	float: left;
+  width: 100px;
+  margin: 1px 10px 1px 10px;
+}
+
+.regular_month, .bold_month {
+	padding: 0px 25px 0px 25px;
+	border-right: 1px solid darkgrey;
+	border-left: 1px solid darkgrey;
+	margin-left: -1px;
+}
+
+.bold_month {
+	font-weight: bold;
+}
+
+dt {
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+
+li {
+	display: inline;
+}
+
+.calendar-mini-header-months, .calendar-mini-header {
+	width: 35em;
+	padding: 7px;
+	text-align: center;
+	margin: 10px auto 10px auto;
+	border-top: 1px solid darkgrey;
+	border-bottom: 1px solid darkgrey;
+
+}
+
+.calendar-mini-navs ul {
+	margin: 10px auto 10px auto;
+}
+
+.my-lectures-list {
+	margin-top: 60px;
+	position: relative;
+	left: 60px;
+}
+
+#total-hours {
+	text-align: center;
+}
+
+.reprogram-class-link a {
+	color: red;
+	font-size: 70%;
+}
+
+

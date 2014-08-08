@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   # devise after sign in path
   def after_sign_in_path_for(resource)
- 		my_lectures_lectures_path
+ 		my_lectures_lecture_path(resource)
 	end
 
 	# devise add :first_name, :last_name attributes
