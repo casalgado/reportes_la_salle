@@ -10,11 +10,18 @@
   <%= link_to("Reportes", my_reports_lecture_path(current_user)) %>
   </li>
 
+<% elsif coordinator_signed_in? %> 
+
+  <li> <%= link_to("Reportes", reports_path) %> </li>
+  <li> <%= link_to('Asignaturas', '#') %> </li>
+
 <% else %>
+
   <li>
   <%= link_to('Tutorial', '#')  %>  
   </li>
   <li>
   <%= link_to('La Salle', '#')  %>
   </li>
+
 <% end %>

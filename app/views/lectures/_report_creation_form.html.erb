@@ -1,0 +1,15 @@
+
+	<%= form_for @report do |f| %>
+
+
+	<%= f.hidden_field :year, value: Date.today.year %>
+	<%= f.hidden_field :month_of_report, value: @month_of_report %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.hidden_field :total_hours, value: @total_hours_of_class %>
+
+	
+
+	<%= f.submit 'Enviar Reporte', class: "create-report-button" %>
+
+
+	<% end %>

@@ -1,0 +1,34 @@
+
+<!-- 
+Esta view es muy similar a lectures/my_reports. Cuando solucione como separar el admin de los otros usuarios
+se pueden juntar las dos views y que cambie el contenido dependiendo de admin? 
+-->
+
+<h1>Reportes</h1>
+
+<div class="calendar-mini-navs">
+<ul>
+	<div class="calendar-mini-header">
+<li class= <%= @period == '1' ? "bold_month" : 'regular_month' %> ><%= link_to "Invierno", :controller => "reports", :action => "index", :period => 1 %> </li>
+<li class= <%= @period == '2' ? "bold_month" : 'regular_month' %> ><%= link_to "Verano",   :controller => "reports", :action => "index", :period => 2 %> </li>
+<li class= <%= @period == '3' ? "bold_month" : 'regular_month' %> ><%= link_to "Otoño",    :controller => "reports", :action => "index", :period => 3 %> </li>
+	</div>
+</ul>
+
+<ul>
+	<div class="calendar-mini-header-months">
+<%= render "reports/report_mini_header_months" %>	
+	</div>
+</ul>
+
+<% unless @total_reports_due == 0%>
+<div>
+	<ul class="report-list-in-index">
+		<li> Reportes Entregados   : <%= "#{@reports_turned_in}" %></li>
+		<li> Reportes por Engregar : <%= "#{@reports_still_due}" %></li>
+		<li> Total Reportes por Entregar: <%= "#{@total_reports_due}" %></li>
+
+	</ul>
+</div>
+
+<% end %>

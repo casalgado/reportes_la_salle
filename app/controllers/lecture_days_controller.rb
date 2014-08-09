@@ -1,9 +1,9 @@
 class LectureDaysController < ApplicationController
   
-
+  before_action :authenticate_user!
 
   def edit
-  	@lecture_day = LectureDay.find(params[:format])
+  	@lecture_day = LectureDay.find(params[:id])
   end
 
   def update

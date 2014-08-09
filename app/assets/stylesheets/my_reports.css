@@ -61,4 +61,7 @@ li {
 	font-size: 70%;
 }
 
-
+.create-report-button {
+	position: relative;
+	left: 385px;
+}

@@ -43,6 +43,7 @@ class LecturesController < ApplicationController
     @period = params[:period] || Date.today.to_period.to_s
     @lectures = current_user.lectures.where(period: @period)
     @total_hours_of_class = @lectures.calculate_hours_per_month(@month_of_report)
+    @report = Report.new
   end
 
   private
@@ -51,5 +52,7 @@ class LecturesController < ApplicationController
     allow = [:course_id, :week_day, :lecture_start_time, :period, :year]
     params.require(:lecture).permit(allow)
   end
+
+
 
 end

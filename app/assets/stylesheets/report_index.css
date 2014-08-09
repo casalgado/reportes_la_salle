@@ -1,0 +1,10 @@
+
+.report-index-container {
+	position: relative;
+	top: 50px;
+	left: 120px;
+}
+
+.report-list-in-index li {
+	display: block;
+}

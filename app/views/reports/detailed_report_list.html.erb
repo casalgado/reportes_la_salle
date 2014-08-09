@@ -1,0 +1,16 @@
+<div class="report-index-container">
+<div>
+<%= "#{Date::MONTHNAMES[@month_of_report.to_i]}" %>
+</div>
+<ul>
+<% for report in @reports %>
+				<ul class="day_of_lecture_container">
+				<li class="day_of_lecture"> <%= "#{User.find(report.user_id).first_name}" %>    </li>
+				<li class="day_of_lecture"> <%= "#{User.find(report.user_id).last_name}" %>     </li>
+				<li class="day_of_lecture"> <%= "#{Date::MONTHNAMES[report.month_of_report]}" %></li> 
+				<li class="day_of_lecture"> <%= "Horas: #{report.total_hours}" %>               </li>
+				</ul>
+<% end %>
+			
+</ul>
+</div>

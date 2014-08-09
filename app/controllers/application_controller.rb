@@ -4,7 +4,12 @@ class ApplicationController < ActionController::Base
 
   # devise after sign in path
   def after_sign_in_path_for(resource)
+    if current_user
  		my_lectures_lecture_path(resource)
+    else
+    reports_path
+    end
+
 	end
 
 	# devise add :first_name, :last_name attributes
@@ -15,6 +20,10 @@ class ApplicationController < ActionController::Base
 	def configure_permitted_parameters
 	  devise_parameter_sanitizer.for(:sign_up) << :first_name
 	  devise_parameter_sanitizer.for(:sign_up) << :last_name
-	end
+
+    devise_parameter_sanitizer.for(:account_update) << :first_name
+    devise_parameter_sanitizer.for(:account_update) << :last_name
+  end
+
 
 end

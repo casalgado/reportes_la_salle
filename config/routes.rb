@@ -1,12 +1,19 @@
 ReportesLaSalle::Application.routes.draw do
   
-  get "lecture_days/edit"
-  get "lecture_days/destroy"
+
+  
   # devise routes
+
   devise_for :users
 
   devise_scope :user do
   root to: "devise/sessions#new"
+  end
+
+  devise_for :coordinators
+
+  devise_scope :coordinator do
+  get    '/no-access'   => "devise/sessions#no_access",     as: :no_access
   end
 
   # lecture routes
@@ -19,5 +26,10 @@ ReportesLaSalle::Application.routes.draw do
   # lecture_day routes
 
   resources :lecture_days
+
+  # report routes
+
+  resources :reports
+
   
 end

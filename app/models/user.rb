@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :lectures
   has_many :courses, through:  :lectures
 
+  has_many :reports
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
