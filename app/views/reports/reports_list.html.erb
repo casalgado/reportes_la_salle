@@ -1,0 +1,13 @@
+
+<% if @in_or_due %> 
+<h2>Profesores Paz y Salvo</h2>
+<% else %>
+<h2>Profesores que deben Reporte</h2>
+<% end %>
+
+<ul>
+<% for user in @users %>
+	<li> <%= user.first_name %> <%= user.last_name %> </li> <br />
+
+<% end %>
+</ul>

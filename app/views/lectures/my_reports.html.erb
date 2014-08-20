@@ -1,53 +1,40 @@
 <h1>Mis Reportes</h1>
 
 <div class="calendar-mini-navs">
-<ul>
-	<div class="calendar-mini-header">
-<li class= <%= @period == '1' ? "bold_month" : 'regular_month' %> ><%= link_to "Invierno", :controller => "lectures", :action => "my_reports", :period => 1 %> </li>
-<li class= <%= @period == '2' ? "bold_month" : 'regular_month' %> ><%= link_to "Verano",   :controller => "lectures", :action => "my_reports", :period => 2 %> </li>
-<li class= <%= @period == '3' ? "bold_month" : 'regular_month' %> ><%= link_to "Otoño",    :controller => "lectures", :action => "my_reports", :period => 3 %> </li>
-	</div>
-</ul>
-
-<ul>
-	<div class="calendar-mini-header-months">
-<%= render "lectures/calendar_mini_header_months" %>	
-	</div>
-</ul>
+	
+		<%= render "lectures/my_reports_mini_header" %>	
+	
+</div>
 
 
 <dl class="my-lectures-list">
 
 	<% for lecture in @lectures %>
-		<dt><%= link_to "#{lecture.course_name}", edit_lecture_path(lecture) %>
-			</dt>
+		<dt><%= link_to "#{lecture.course.name}", edit_lecture_path(lecture) %> </dt>
 				<% for day in lecture.lecture_days.where(:month_of_report => @month_of_report) %>
-				<dd class="day_of_lecture_container">
-				<li class="day_of_lecture"> <%= "#{Date::MONTHNAMES[day.date_of_lecture.mon]}" %></li>
-				<li class="day_of_lecture"> <%= "#{day.date_of_lecture.mday}" %></li>
-				<li class="day_of_lecture"> <%= "#{Date::DAYNAMES[day.date_of_lecture.wday]}" %></li>
-				<li class="day_of_lecture"> <%= "Horas: #{Course.find(lecture.course_id).duration}"%></li>
-				<% if Report.where(:user_id => current_user.id, :month_of_report => @month_of_report).empty? %>
-				<li class="reprogram-class-link"> <%= link_to "Reprogramar", edit_lecture_day_path(day) %></li>
+					<dd class="day_of_lecture_container">
+							<li class="day_of_lecture"> <%= "#{Date::MONTHNAMES[day.date_of_lecture.mon]}" %></li>
+							<li class="day_of_lecture"> <%= "#{day.date_of_lecture.mday}" %></li>
+							<li class="day_of_lecture"> <%= "#{Date::DAYNAMES[day.date_of_lecture.wday]}" %></li>
+							<li class="day_of_lecture2"> <%= "#{day.time_of_lecture.strftime("%l.%M %P")} - #{
+							(day.time_of_lecture + day.lecture.course.duration.to_i * 3600).strftime("%l.%M %P")}"%></li>
+						<% if Report.where(:user_id => current_user.id, :month_of_report => @month_of_report).empty? %>
+							<li class="reprogram-class-link"> <%= link_to "Reprogramar", edit_lecture_day_path(day) %></li>
+						<% end %>
+					</dd>
 				<% end %>
-				
-				</dd>
-				<% end %>
-			
-		
 	<% end %>
 	
-	</dl>
+</dl>
 
-	<% unless @total_hours_of_class == 0 %>
+<% unless @total_hours_of_class == 0 %>
   <p id="total-hours">
   	Horas totales de <%= "#{Date::MONTHNAMES[@month_of_report.to_i]}"%>:  <%= "#{@total_hours_of_class}" %> 
   </p>
-	<% end %>
+<% end %>
 
-
-	<% if Date.today.mday == 25 || Date.today.mday == 26 || true %>
-  	<%= render "lectures/report_creation_form" %> 
-	<% end %>
+<% if Date.today.mday == 25 || Date.today.mday == 26 || true %>
+ 	<%= render "lectures/report_creation_form" %> 
+<% end %>
 
 	

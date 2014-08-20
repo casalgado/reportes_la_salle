@@ -1,13 +1,19 @@
 
 .day_of_lecture_container {
-	width: 500px;
+	width: 600px;
 	overflow: auto;
 	width: 100%;
 }
 
 .day_of_lecture {
 	float: left;
-  width: 100px;
+  width: 90px;
+  margin: 1px 10px 1px 10px;
+}
+
+.day_of_lecture2 {
+	float: left;
+  width: 150px;
   margin: 1px 10px 1px 10px;
 }
 

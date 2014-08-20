@@ -7,20 +7,22 @@ ReportesLaSalle::Application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-  root to: "devise/sessions#new"
+    root to: "devise/sessions#new"
   end
 
   devise_for :coordinators
 
   devise_scope :coordinator do
-  get    '/no-access'   => "devise/sessions#no_access",     as: :no_access
+    get  'no_access' => "devise/sessions#no_access", as: :no_access
   end
 
   # lecture routes
 
   resources :lectures do
-    get 'my_lectures', :on => :member
-    get 'my_reports' , :on => :member
+    member do
+      get :my_lectures
+      get :my_reports
+    end
   end
 
   # lecture_day routes
@@ -29,7 +31,10 @@ ReportesLaSalle::Application.routes.draw do
 
   # report routes
 
-  resources :reports
+  resources :reports do
+    get 'reports_list', :on => :member
+    get 'download_report', :on => :collection
+  end
 
   
 end

@@ -1,0 +1,65 @@
+
+
+<div class="programs-mini-navs">
+	
+<ul>
+	<div class="calendar-mini-header">
+
+<li class= <%= @period == '1' ? "bold_month" : 'regular_month' %> ><%= link_to "Invierno", :controller => "lectures", :action => "index", :period => 1, :program => @program, :semester => @semester   %> </li>
+<li class= <%= @period == '2' ? "bold_month" : 'regular_month' %> ><%= link_to "Verano",   :controller => "lectures", :action => "index", :period => 2, :program => @program, :semester => @semester    %> </li>
+<li class= <%= @period == '3' ? "bold_month" : 'regular_month' %> ><%= link_to "Otoño",    :controller => "lectures", :action => "index", :period => 3, :program => @program, :semester => @semester    %> </li>
+
+	</div>
+</ul>
+
+
+<ul>
+	<div class="programs-mini-header">
+
+<li class= <%= @program == 'Diseño Grafico'       ? "bold_month" : 'regular_month' %> >
+<%= link_to "Grafico",    :controller => "lectures" , :action => "index", :program => "Diseño Grafico", 
+:period => @period %> </li>
+
+<li class= <%= @program == 'Diseño de Interiores' ? "bold_month" : 'regular_month' %> >
+<%= link_to "Interiorismo", :controller => "lectures", :action => "index", :program => "Diseño de Interiores", 
+:period => @period %> </li>
+
+<li class= <%= @program == 'Fotografia'           ? "bold_month" : 'regular_month' %> >
+<%= link_to "Fotografia", :controller => "lectures" , :action => "index", :program => "Fotografia", 
+:period => @period %> </li>
+
+<li class= <%= @program == 'Mercadeo de la Moda'  ? "bold_month" : 'regular_month' %> >
+<%= link_to "Mercadeo",   :controller => "lectures" , :action => "index", :program => "Mercadeo de la Moda", 
+:period => @period %> </li>
+
+<li class= <%= @program == 'Diseño de Modas'      ? "bold_month" : 'regular_month' %> >
+<%= link_to "Modas",      :controller => "lectures",  :action => "index", :program => "Diseño de Modas", 
+:period => @period %> </li>
+
+	</div>
+</ul>
+
+<ul>
+	<div class="programs-mini-header-months">
+
+<li class= <%= @semester == '1' ? "bold_month" : 'regular_month' %> >
+	 <%= link_to "1",   :controller => "lectures", :action => "index",  :semester => 1 , :program => @program, :period => @period %> </li>
+<li class= <%= @semester == '2' ? "bold_month" : 'regular_month' %> >
+	 <%= link_to "2",   :controller => "lectures", :action => "index",  :semester => 2 , :program => @program, :period => @period %> </li>
+<li class= <%= @semester == '3' ? "bold_month" : 'regular_month' %> >
+	 <%= link_to "3",   :controller => "lectures", :action => "index",  :semester => 3 , :program => @program, :period => @period %> </li>
+<li class= <%= @semester == '4' ? "bold_month" : 'regular_month' %> >	 
+	 <%= link_to "4",   :controller => "lectures", :action => "index",  :semester => 4 , :program => @program, :period => @period %> </li>
+<li class= <%= @semester == '5' ? "bold_month" : 'regular_month' %> >	 
+	 <%= link_to "5",   :controller => "lectures", :action => "index",  :semester => 5 , :program => @program, :period => @period %> </li>
+<li class= <%= @semester == '6' ? "bold_month" : 'regular_month' %> >	 
+	 <%= link_to "6",   :controller => "lectures", :action => "index",  :semester => 6 , :program => @program, :period => @period %> </li>
+<li class= <%= @semester == '7' ? "bold_month" : 'regular_month' %> >	 
+	 <%= link_to "7",   :controller => "lectures", :action => "index",  :semester => 7 , :program => @program, :period => @period %> </li>
+<!-- <li class= <%= @semester == '8' ? "bold_month" : 'regular_month' %> >	 
+	 <%= link_to "8",   :controller => "lectures", :action => "index",  :semester => 8 , :program => @program, :period => @period %> </li>
+ -->
+
+	</div>
+</ul>
+

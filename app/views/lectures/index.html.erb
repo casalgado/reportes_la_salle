@@ -1,0 +1,21 @@
+
+<h1>Asignaturas</h1>
+
+<%= render "lectures/index_mini_header" %>	
+
+<div class="index-list-container"
+	<% unless @lectures == nil %>
+		<ul>
+			<% for lecture in @lectures %>
+				<ul class="lectures-index-container">
+					<li class="lectures-index-name"> <%= "#{lecture.user.first_name} #{lecture.user.last_name}" %></li>
+					<li class="lectures-index-name"> <%= "#{lecture.course.name}" %></li>
+					<li class="lectures-index"> <%= Date::DAYNAMES[lecture.week_day] %></li>
+					<li class="lectures-index"> <%= lecture.lecture_start_time.strftime("%I:%M %p") %></li>
+				</ul>
+			<% end %>
+		<ul>
+	<% end %>
+</div>
+
+

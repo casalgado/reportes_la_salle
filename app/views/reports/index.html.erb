@@ -9,9 +9,9 @@ se pueden juntar las dos views y que cambie el contenido dependiendo de admin?
 <div class="calendar-mini-navs">
 <ul>
 	<div class="calendar-mini-header">
-<li class= <%= @period == '1' ? "bold_month" : 'regular_month' %> ><%= link_to "Invierno", :controller => "reports", :action => "index", :period => 1 %> </li>
-<li class= <%= @period == '2' ? "bold_month" : 'regular_month' %> ><%= link_to "Verano",   :controller => "reports", :action => "index", :period => 2 %> </li>
-<li class= <%= @period == '3' ? "bold_month" : 'regular_month' %> ><%= link_to "Otoño",    :controller => "reports", :action => "index", :period => 3 %> </li>
+<li class= <%= @period == '1' ? "bold_month" : 'regular_month' %> ><%= link_to "Invierno", :controller => "reports", :action => "index", :period => 1, :month_of_report => 1 %> </li>
+<li class= <%= @period == '2' ? "bold_month" : 'regular_month' %> ><%= link_to "Verano",   :controller => "reports", :action => "index", :period => 2, :month_of_report => 5 %> </li>
+<li class= <%= @period == '3' ? "bold_month" : 'regular_month' %> ><%= link_to "Otoño",    :controller => "reports", :action => "index", :period => 3, :month_of_report => 9 %> </li>
 	</div>
 </ul>
 
@@ -21,14 +21,29 @@ se pueden juntar las dos views y que cambie el contenido dependiendo de admin?
 	</div>
 </ul>
 
-<% unless @total_reports_due == 0%>
-<div>
-	<ul class="report-list-in-index">
-		<li> Reportes Entregados   : <%= "#{@reports_turned_in}" %></li>
-		<li> Reportes por Engregar : <%= "#{@reports_still_due}" %></li>
-		<li> Total Reportes por Entregar: <%= "#{@total_reports_due}" %></li>
+<% unless @total_reports_due == 0 %>
+<div class="report-index-container">
 
+	<ul class=>
+		<li class="report-index-item"> Reportes Entregados   :        </li>
+		<li class="report-index-item2 bold_month"> <%= link_to "#{@reports_turned_in}", 
+		:controller => "reports", :action => "reports_list", :month_of_report => @month_of_report, :in_or_due => true, :id => current_coordinator.id %> </li>
 	</ul>
+	<br>
+	<ul>
+		<li class="report-index-item"> Reportes por Engregar :        </li>
+		<li class="report-index-item2 bold_month"> <%= link_to "#{@reports_still_due}", 
+		:controller => "reports", :action => "reports_list", :month_of_report => @month_of_report, :period => @period, :in_or_due => nil, :id => current_coordinator.id %> </li> 
+	</ul>
+	<br>
+	<br>
+	<br>
+	<ul>
+		<li class="report-index-item"> Total Reportes por Entregar:   </li>
+		<li class="report-index-item2 bold_month"> <%= "#{@total_reports_due}" %> </li>
+	</ul>
+
+
 </div>
 
 <% end %>

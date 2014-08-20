@@ -4,7 +4,7 @@
 
 	<% for lecture in @lectures %>
 		<ul class="my-lectures-container">
-		<li class="my-lectures-name"> <%= link_to "#{lecture.course_name}", edit_lecture_path(lecture) %></li>
+		<li class="my-lectures-name"> <%= link_to "#{lecture.course.name}", edit_lecture_path(lecture) %></li>
 		<li class="my-lectures"> <%= Date::DAYNAMES[lecture.week_day] %></li>
 		<li class="my-lectures"> <%= lecture.lecture_start_time.strftime("%I:%M %p") %></li>
 		</ul>

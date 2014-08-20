@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809180544) do
+ActiveRecord::Schema.define(version: 20140820233101) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -69,7 +69,10 @@ ActiveRecord::Schema.define(version: 20140809180544) do
     t.integer  "month_of_report"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "report_id"
   end
+
+  add_index "lecture_days", ["report_id"], name: "index_lecture_days_on_report_id"
 
   create_table "lectures", force: true do |t|
     t.integer  "user_id"

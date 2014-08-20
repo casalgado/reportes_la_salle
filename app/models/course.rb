@@ -6,7 +6,7 @@ class Course < ActiveRecord::Base
 	validates_uniqueness_of :name, scope: :program
 
 
-	# este method es para load los courses como objetos en la base de datos. Deberia moverlo a un initialize.
+	# Este method es para load los courses como objetos en la base de datos. Deberia moverlo a un initialize.
 	def self.load
 		doc = Roo::Excel.new('/Users/carlosalbertosalgadohazbun/Desktop/reportes_la_salle/lib/assets/CourseLibrary.xls')
 		header = doc.row(1)
@@ -16,6 +16,18 @@ class Course < ActiveRecord::Base
 				course = Course.new(params)
 				course.save
 			end		
+	end
+
+	# Este metodo es para LecturesController/new 
+
+	def self.filter_courses(program, semester)
+		if program == nil
+      Course.all
+    elsif semester == nil
+      Course.where(:program => program)
+    else
+      Course.where(:program => program, :semester => semester)
+    end
 	end
 
 end

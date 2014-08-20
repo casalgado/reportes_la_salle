@@ -2,7 +2,7 @@
 <% if @period == "1" %>
 
 <li class= <%= @month_of_report == '1' ? "bold_month" : 'regular_month' %> >
-	 <%= link_to "Enero",   :controller => "reports", :action => "index",  :month_of_report => "1" , :period => @period %> </li>
+	 <%= link_to "Enero", reports_path(:month_of_report => "1" , :period => @period) %> </li>
 <li class= <%= @month_of_report == '2' ? "bold_month" : 'regular_month' %> >
    <%= link_to "Febero",  :controller => "reports", :action => "index",  :month_of_report => "2" , :period => @period %> </li>
 <li class= <%= @month_of_report == '3' ? "bold_month" : 'regular_month' %> > 
@@ -13,13 +13,13 @@
 <% elsif @period == "2" %> 
  
 <li class= <%= @month_of_report == '5' ? "bold_month" : 'regular_month' %> >
-	  <%= link_to "Mayo",    :controller => "reports", :action => "index",  :month_of_report => "5" , :period => @period %> </li>
+	 <%= link_to "Mayo",    :controller => "reports", :action => "index",  :month_of_report => "5" , :period => @period %> </li>
 <li class= <%= @month_of_report == '6' ? "bold_month" : 'regular_month' %> >
-	  <%= link_to "Junio",   :controller => "reports", :action => "index",  :month_of_report => "6" , :period => @period %> </li>
+	 <%= link_to "Junio",   :controller => "reports", :action => "index",  :month_of_report => "6" , :period => @period %> </li>
 <li class= <%= @month_of_report == '7' ? "bold_month" : 'regular_month' %> >
-	  <%= link_to "Julio",   :controller => "reports", :action => "index",  :month_of_report => "7" , :period => @period %> </li>
+	 <%= link_to "Julio",   :controller => "reports", :action => "index",  :month_of_report => "7" , :period => @period %> </li>
 <li class= <%= @month_of_report == '8' ? "bold_month" : 'regular_month' %> >
-  	<%= link_to "Agosto",  :controller => "reports", :action => "index",  :month_of_report => "8" , :period => @period %> </li>
+  <%= link_to "Agosto",  :controller => "reports", :action => "index",  :month_of_report => "8" , :period => @period %> </li>
  
 <% elsif @period == "3" %>
 
