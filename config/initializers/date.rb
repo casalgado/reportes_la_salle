@@ -18,5 +18,23 @@ class Date
   	end	
   end
 
+  def move_holiday
+    if self.wday == 1
+      self
+    elsif self.wday == 0
+      Date.ordinal(self.year, (self.yday + 1))
+    else 
+      Date.ordinal(self.year, (self.yday + (8-self.wday)))
+    end
+  end
+
+  def holiday?
+    unless Holiday.where(:date => self).empty?
+      true
+    else
+      false
+    end 
+  end
+
 
 end

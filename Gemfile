@@ -32,4 +32,8 @@ gem 'axlsx', '~> 2.0.1'
 
 gem 'axlsx_rails', '~> 0.2.0'
 
+gem 'acts_as_xlsx', '~>1.0.6'
+
 gem 'rubyzip', '~> 1.0.0'
+
+gem 'when_easter', '~> 0.3.1'

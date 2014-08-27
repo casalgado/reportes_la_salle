@@ -1,8 +1,35 @@
 
+.header-top {
+	width: 960px;
+	margin: 10px;
+	height: 100px;
+}
+
+.flag-container {
+	float: right;
+	width: 150px;
+}
+
+.flag-container img {
+	width: 50px;
+	height: 31px;
+	margin-left: 10px;
+}
+
+.logo-header {
+	float: left;
+	width: 200px;
+}
+
+.logo-header img {
+	margin-left: 20px;
+}
+
 .navbar {
 	width: 940px;
 	margin: 10px;
-	border: 2px solid black;
+/*	border: 2px solid #cecece;*/
+	background-color: #005978;
 	overflow: auto;
 	width: 100%;
 }
@@ -18,14 +45,26 @@
 	margin-right: 20px;
 }
 
+.navbar a:link, .navbar a:visited, .navbar a:active {
+	font-family: Helvetica;
+	font-weight: lighter;
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .navbar-left {
   float: left;
-  width: 720px;
+  width: 620px;
   margin: 10px;
 }
 
 .navbar-right {
-  float: left;
-  width: 200px;
+  float: right;
+  width: 300px;
   margin: 10px;
+}
+
+.navbar-right ul {
+  float: right;
+
 }

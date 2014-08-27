@@ -1,13 +1,18 @@
 
 <% if @in_or_due %> 
-<h2>Profesores Paz y Salvo</h2>
+<h2>Profesores Paz y Salvo <%= "#{Date::MONTHNAMES[params[:month_of_report].to_i]}"%></h2>
 <% else %>
-<h2>Profesores que deben Reporte</h2>
+<h2>Profesores que deben Reporte <%= "#{Date::MONTHNAMES[params[:month_of_report].to_i]}"%></h2>
 <% end %>
 
 <ul>
 <% for user in @users %>
-	<li> <%= user.first_name %> <%= user.last_name %> </li> <br />
-
+	<li> <%= link_to "#{user.first_name} #{user.last_name}", my_reports_lecture_path(:id => user.id) %> </li> <br />
 <% end %>
 </ul>
+
+<% if @in_or_due %> 
+<%= link_to "Descargar Todos", download_report_reports_path(:user_id => @users.collect{|user| user.id}, :month_of_report => params[:month_of_report]), {class: "create-report-button"}%>
+<% else %>
+
+<% end %>

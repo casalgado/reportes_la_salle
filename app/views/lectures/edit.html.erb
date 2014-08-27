@@ -1,32 +1,31 @@
 
-<h2> <%= @course.name %> </h2>
+<h2 class="page-title"> <%= @course.name %> </h2>
 
-<div class="lecture-description-container">
-	<dl> 
-		<dt> Programa: </dt>
-			<dd> <%= @course.program %> </dd>
-		<dt> Creditos: </dt>
-			<dd> <%= @course.credits %> </dd>
-		<dt> Horas Semanales: </dt>
-			<dd> <%= @course.duration %> </dd>
-		<dt> Area: </dt>
-			<dd> <%= @course.area %> </dd>
-		</dl>
+<div class="page-content">
+	<div class="lecture-description-container">
+		<ul> 
+			<li> <span class=" "> Programa:        </span> <span class="bold"> <%= @course.program %>  </span> </li>
+			<li> <span class=" "> Horas Semanales: </span> <span class="bold"> <%= @course.duration %> </span> </li>
+			<li> <span class=" "> Area:            </span> <span class="bold"> <%= @course.area %>     </span> </li>
+			<li> <span class=" "> Creditos:        </span> <span class="bold"> <%= @course.credits %>  </span> </li>
+		</ul> 
 
-<% if @lecture.created_at.to_date === Date.today %>
-	
-	<h3> Editar Horario </h3>
+	<% if @lecture.created_at.to_date === Date.today %>
+		
+		<h3> Editar Horario </h3>
 
-	<%= form_for @lecture do |f| %>
+		<%= form_for @lecture do |f| %>
 
-		<%= f.label :week_day %>
-		<%= select(:lecture, :week_day, [["Lunes", 1], ["Martes", 2], ["Miercoles", 3], ["Jueves", 4], ["Viernes", 5], ["Sabado", 6]]) %>
+			<%= f.label :dia %>
+			<%= select(:lecture, :week_day, [["Lunes", 1], ["Martes", 2], ["Miercoles", 3], ["Jueves", 4], ["Viernes", 5], ["Sabado", 6]]) %>
+			<br />
+			<%= f.label :hora %>
+			<%= f.time_select :lecture_start_time, {:minute_step => 30, ampm: true} %>
+			<br />
 
-		<%= f.label :course_start_time %>
-		<%= f.time_select :lecture_start_time, {:minute_step => 30, ampm: true} %>
-
-
-		<%= f.submit %>
-		<%= link_to "Delete", @lecture, method: :delete%>
+			<%= f.submit "Actualizar"%>
+			<br />
+			<%= link_to "Eliminar", @lecture, method: :delete%>
+		<% end %>
 	<% end %>
-<% end %>
+</div>

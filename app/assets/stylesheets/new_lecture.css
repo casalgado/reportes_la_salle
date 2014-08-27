@@ -18,5 +18,6 @@
 }
 
 .form-for-new {
-	margin-top: 45px;
+	width: 860px;
+	margin: 45px 30px auto auto;
 }

@@ -17,9 +17,26 @@ a:link, a:visited, a:active {
   text-decoration: none;
 }
 
+.invisible {
+	color: #ffffff;
+	font-size: 1%;
+}
+
 body {
 	font-family: Helvetica;
+	font-weight: lighter;
 	color: #333333;
 	width: 960px;
 	margin: 20px auto auto auto;
+}
+
+.page-title {
+	margin: 30px auto 30px 10px;
+	text-align: center;
+}
+
+.page-content {
+	width: 940px;
+	margin: 10px;
+	width: 100%;
 }

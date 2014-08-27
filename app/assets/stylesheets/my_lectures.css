@@ -1,14 +1,15 @@
 
 
 .my-lectures-container {
-	width: 400px;
+	width: 530px;
 	overflow: auto;
-	width: 100%;
+	margin: auto auto auto auto;
 }
+
 
 .my-lectures-name {
 	float: left;
-  width: 300px;
+  width: 250px;
   margin: 1px 10px 1px 10px;
 }
 

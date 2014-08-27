@@ -3,30 +3,66 @@ wb = xlsx_package.workbook
 wb.add_worksheet(name: "Reports") do |sheet|
 
 	wb.styles do |s|
-		header = s.add_style :sz => 14, :b => true, :alignment => { :horizontal => :center, :vertical => :center }
-		border_bottom =  s.add_style :border => { :style => :thin, :color => "0000000", :edges => [:bottom] }
-		table_header = s.add_style :alignment => { :horizontal => :center }, :border => { :style => :thin, :color => "0000000"}
+		header        = s.add_style :sz => 14, :b => true, :bg_color => "FFFFFF", :alignment => { :horizontal => :center, :vertical => :center }, :border => { :style => :thin, :color => "0000000", :edges => [:bottom]}
+		border_bottom = s.add_style :border => { :style => :thin, :color => "0000000", :edges => [:bottom] }, :bg_color => "FFFFFF"
+		table_header  = s.add_style :alignment => { :horizontal => :center }, :border => { :style => :thin, :color => "0000000"}, :b => true
+    table_item    = s.add_style :sz => 12, :bg_color => "FFFFFF", :border => { :style => :thin, :color => "0000000"}
+    phantom       = s.add_style(:bg_color => "FFFFFF", :height => 12)
+    faculty       = s.add_style :sz => 14, :b => true, :bg_color => "FFFFFF", :alignment => {:horizontal => :center}, :border => { :style => :thin, :color => "0000000", :edges => [:bottom] }
+    fecha_de      = s.add_style :bg_color => "FFFFFF", :b => true, :height => 27, :alignment => {:horizontal => :center}
+    fecha_de_dia  = s.add_style :bg_color => "FFFFFF", :b => true, :height => 27, :alignment => {:horizontal => :center}, :border => { :style => :thin, :color => "0000000", :edges => [:bottom] }
+    fecha_de_dia2 = s.add_style :bg_color => "FFFFFF", :b => true, :sz => 12, :height => 27, :alignment => {:horizontal => :center}, :border => { :style => :thin, :color => "0000000", :edges => [:bottom] }
+    fecha_sin_bor = s.add_style :bg_color => "FFFFFF", :b => true, :height => 27, :alignment => {:horizontal => :center}
+    namenfac      = s.add_style(:bg_color => "FFFFFF", :b => true)
 
-		sheet.add_row ["INFORME: Horas de Enseñanza"], :style => [header], :height => 40
-		sheet.add_row [""]
-		sheet.add_row ["NOMBRE:", "#{@report.user.first_name} #{@report.user.last_name}", "", "Fecha de Entrega", "#{Date.today}"], :height => 27
- 		sheet.add_row ["FACULTAD:", "Crear Metodo"], :height => 27
- 		sheet.add_row [""]
- 		sheet.add_row ["FECHA DEL:", "", "@ Dia inicio", "HASTA:", "@ Dia Fin"]
- 		sheet.add_row [""]
+		sheet.add_row ["INFORME: Horas de Enseñanza", "", "", "", ""], :style => header, :height => 40
+		sheet.add_row [" "," "," "," "," "], :style => phantom, :height => 12
+		sheet.add_row ["NOMBRE:", "#{@report.user.first_name} #{@report.user.last_name}", "", "FECHA DE ENTREGA:", "#{Date.today.strftime('%d %b %Y')}"], :style => namenfac, :height => 27
+ 		sheet.add_row ["FACULTAD:", "#{@report.user.print_faculties}", " ", " ", " "], :style => namenfac, :height => 27
+ 		sheet.add_row [" "," "," "," "," "], :style => phantom, :height => 12
+ 		sheet.add_row ["FECHA DEL:", "", "#{Date.new(Date.today.year, @report.month_of_report.to_i-1, 26).strftime('%d %b %Y')}", "HASTA:", "#{Date.new(Date.today.year, @report.month_of_report.to_i, 25).strftime('%d %b %Y')}"], :style => fecha_de
+ 		sheet.add_row [" "," "," "," "," "], :style => phantom, :height => 12
  		sheet.add_row ["FECHA", " ", "HORARIO", "MATERIA", "No. DE HORAS"], :style => table_header
 
-  		[@report].each do |report|
-  			sheet.add_row [report.month_of_report, report.total_hours]
+  		@lecture_days.each do |day|
+  			sheet.add_row ["#{Date::MONTHNAMES[day.date_of_lecture.mon]} #{day.date_of_lecture.mday}", "", "#{day.time_of_lecture.strftime("%l.%M %P")} a #{(day.time_of_lecture + day.lecture.course.duration.to_i * 3600).strftime("%l.%M %P")}", day.lecture.course.name, day.lecture.course.duration], :style => table_item, :height => 22, :b => true
 			end
-   sheet.column_widths 18, 7, 25, 25, 25
+      sheet.add_row ["", "", "", "TOTAL HORAS:", "#{@report.total_hours}"], :style => fecha_sin_bor, :height => 27
+      sheet.add_row [" "," "," "," "," "], :style => phantom, :height => 12
+      sheet.add_row [" "," "," "," "," "], :style => phantom, :height => 12
+      sheet.add_row ["#{@report.user.first_name} #{@report.user.last_name}", "", "", "", "" ], :style => fecha_de_dia2
+      sheet.add_row ["Profesor", "", "", "Coordinador Académico", ""], :style => namenfac
+      sheet.add_row [" "," "," "," "," "], :style => phantom, :height => 12
+      sheet.add_row [" "," "," "," "," "], :style => phantom, :height => 12
+
+
+   sheet.column_widths 10, 5, 20, 20, 12
+
    sheet.merge_cells("A1:E1")
    sheet.merge_cells("B3:C3")
    sheet.merge_cells("B4:E4")
    sheet.merge_cells("A6:B6")
    sheet.merge_cells("A8:B8")
-   sheet.row_style 1, border_bottom, col_offset: 1
-   sheet.row_style 2, border_bottom, col_offset: 1
+
+
+
+   sheet.row_style 2, fecha_de_dia, col_offset: 1
+   sheet.row_style 3, faculty, col_offset: 1
+   sheet.rows[2].cells[3].style = fecha_sin_bor
+   sheet.rows[5].cells[2].style = fecha_de_dia 
+   sheet.rows[5].cells[4].style = fecha_de_dia 
+
+
+      first = 9
+      @lecture_days.count.times do |merge|
+        sheet.merge_cells("A#{first}:B#{first}")
+        first += 1
+      end
+   sheet.merge_cells("A#{first+3}:C#{first+3}")
+   sheet.merge_cells("D#{first+3}:E#{first+3}")
 
  	end
 end
+
+
+

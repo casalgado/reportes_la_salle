@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
 
-   before_filter :authenticate_coordinator!, :except => [:create]
+   before_filter :authenticate_coordinator!, :except => [:create, :download_report]
    before_filter :authenticate_user!, :only => [:create]
 
 
@@ -10,6 +10,7 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.new(report_params)
     @report.save
+    @lecture_days = LectureDay.update_report_id(@report.year, @report.period, @report.month_of_report, current_user.id, @report.id)
     redirect_to :back
   end
 
@@ -46,8 +47,11 @@ class ReportsController < ApplicationController
   end
 
   def download_report
-    @report = Report.first
-    render :xlsx => "download_report", :filename => "all_reports.xlsx"
+    params[:user_id].each do |user_id|
+      @report = Report.find_by(:user_id => user_id, :month_of_report => params[:month_of_report])
+      @lecture_days = @report.lecture_days
+      render :xlsx => "download_report", :filename => "#{Date.new(2001, @report.month_of_report, 12).strftime('%b')} - #{@report.user.last_name}.xlsx"
+    end
   end
 
   private
@@ -58,4 +62,12 @@ class ReportsController < ApplicationController
   end
 
 end
-  
+
+  # def download_report
+  #   params[:user_id].each do |user_id|
+  #     @report = Report.find_by(:user_id => user_id, :month_of_report => params[:month_of_report])
+  #     @lecture_days = @report.lecture_days
+  #     render :xlsx => "download_report", :filename => "#{Date.new(2001, @report.month_of_report, 12).strftime('%b')} - #{@report.user.last_name}.xlsx"
+  #   end
+  # end
+  # 

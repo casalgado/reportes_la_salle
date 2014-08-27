@@ -1,0 +1,27 @@
+
+.devise-signin {
+	float: left;
+	margin: 45px auto auto 75px;
+
+}
+
+.devise-signin h2 {
+	position: relative;
+	left: -25px;
+}
+
+.devise-shared-links a {
+	font-size: 80%;
+}
+
+.devise-child {
+	position: relative;
+	left: 30px;
+}
+
+.welcome-image {
+	float: right;
+	width: 600px;
+	height: 370px;
+	margin: 30px 40px auto auto;
+}

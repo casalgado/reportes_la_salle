@@ -1,21 +1,37 @@
-<h2>Iniciar Sesion</h2>
-<p>Profesor</p>
+<div class="devise-signin-container">
+	<div class="devise-signin">
+		<h2>Iniciar Sesion</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+				<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+				  <div><%= f.label :email %><br />
+				  <%= f.email_field :email, autofocus: true %></div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+				  <div><%= f.label :password %><br />
+				    <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div><%= f.submit "Sign in" %></div>
+				  <br />  
+				  <% if devise_mapping.rememberable? -%>
+				    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+				  <% end -%>
 
-<% end %>
 
-<%= render "devise/shared/links" %>
+				  <br /> 
+				  <div><%= f.submit "Sign in" %></div>
 
-<%= link_to('Coordinador', new_coordinator_session_path)  %>
+				<% end %>
+
+				<br />
+
+				<%= render "devise/shared/links" %>
+
+				<div class="devise-shared-links">
+					<%= link_to('Soy Coordinador', new_coordinator_session_path)  %>
+				</div>
+		</div>
+	
+
+	<div class="welcome-image">
+	  <%= render "layouts/welcome_image" %>
+	</div>
+</div>

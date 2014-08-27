@@ -1,4 +1,5 @@
 
+
 .day_of_lecture_container {
 	width: 600px;
 	overflow: auto;
@@ -49,25 +50,48 @@ li {
 }
 
 .calendar-mini-navs ul {
-	margin: 10px auto 10px auto;
+	padding: 0;
+	margin: auto auto auto auto;
+}
+
+.my-lectures-list-container {
+	width: 940px;
+	margin-left: 10px;
 }
 
 .my-lectures-list {
-	margin-top: 60px;
-	position: relative;
-	left: 60px;
+	margin: 60px auto auto auto;
+	width: 65%;
+
+}
+
+.my-lectures-list dt {
+	font-weight: normal;
 }
 
 #total-hours {
 	text-align: center;
 }
 
-.reprogram-class-link a {
+.reprogram-holiday-link a {
 	color: red;
 	font-size: 70%;
 }
 
-.create-report-button {
-	position: relative;
-	left: 385px;
+.reprogram-class-link a {
+	color: black;
+	font-size: 70%;
 }
+
+.create-report-button {
+	margin: 10px auto auto auto;
+	position: relative;
+	left: 427px;
+}
+
+.p-create-report-button {
+	margin: 10px auto auto auto;
+	text-align: center;
+	width: 100%;
+}
+

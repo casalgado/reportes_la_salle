@@ -5,3 +5,24 @@
 
 
 
+.lecture-description-container {
+	width: 300px;
+	text-align: center;
+	margin: 10px auto auto auto;
+}
+
+.lecture-description-container li {
+	display: block;
+}
+
+.lecture-description-container ul {
+	padding: 0;
+}
+
+span.italic {
+	font-style: italic;
+}
+
+span.bold {
+	font-weight: bold;
+}

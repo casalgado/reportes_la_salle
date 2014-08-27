@@ -1,13 +1,16 @@
 class LecturesController < ApplicationController
 
-  before_action :authenticate_user!, :except => [:index]
+
+  before_action :authenticate_user!, :except => [:index, :my_reports]
+  before_action :authenticate_coordinator!, :only => [:index]
+  before_action :user_logged_in, :only => [:my_reports]
 
   def new
     @lecture = Lecture.new(period: 2)
     @lecture.period = 1 if (Time.now.month < 5)
     @lecture.period = 3 if (Time.now.month > 8)
-    @program  = params[:program]
-    @semester = params[:semester]
+    @program  = params[:program] || "Diseño Grafico"
+    @semester = params[:semester] || "1"
     @courses = Course.filter_courses(@program, @semester)
   end
 
@@ -57,13 +60,16 @@ class LecturesController < ApplicationController
   end
 
   # El metodo calculate_hours_per_month( ) esta declarado en config/initializers/array.rb
+  # El metodo period_to_report_month esta en config/initializers/integer.rb
 
   def my_reports
-    @month_of_report = params[:month_of_report] || Date.today.to_report_month.to_s
+    @user = current_user || User.find(params[:id])
     @period          = params[:period] || Date.today.to_period.to_s
-    @lectures        = current_user.lectures.where(period: @period)
+    @month_of_report = params[:month_of_report] || @period.to_i.period_to_report_month.to_s
+    @lectures        = @user.lectures.where(period: @period)
     @total_hours_of_class = @lectures.calculate_hours_per_month(@month_of_report)
     @report = Report.new
+    @holiday = false
   end
 
   private
@@ -73,6 +79,11 @@ class LecturesController < ApplicationController
     params.require(:lecture).permit(allow)
   end
 
+  def user_logged_in
+    unless current_user || current_coordinator
+      redirect_to root_path
+    end
+  end
 
 
 end

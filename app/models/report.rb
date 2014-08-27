@@ -1,5 +1,6 @@
 class Report < ActiveRecord::Base
 
+	acts_as_xlsx
 	belongs_to :user
 	has_many :lecture_days
 
@@ -21,6 +22,18 @@ class Report < ActiveRecord::Base
 
 	def self.exists_for?(id, lecture_day)
 		Report.where(:user_id => id, :month_of_report => lecture_day.date_of_lecture.to_report_month).empty?
+	end
+
+	# Calcula el periodo del report tomando como parametro el mes
+
+	def period
+		if self.month_of_report > 8
+			3
+		elsif self.month_of_report < 5
+			1
+		else
+			2
+		end
 	end
 
 

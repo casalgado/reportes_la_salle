@@ -32,5 +32,15 @@ class User < ActiveRecord::Base
     User.where( { id: [User.per_period(period) - Report.reports_turned_in_users(month)]})
   end
 
+  # Este method es para poner las facultades en el excell.
+
+  def print_faculties
+    faculties = []
+    self.lectures.each do |lecture|
+      faculties << lecture.course.program
+    end
+    faculties.uniq.join(', ')
+  end
+
 
 end

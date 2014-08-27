@@ -1,4 +1,4 @@
-<h1>Agregar Clase</h1>
+<h2  class="page-title">Agregar Asignatura</h2>
 
 <%= render "lectures/new_mini_header" %>	
 
@@ -10,22 +10,22 @@
 
 	<%= f.hidden_field :year, value: Date.today.year %>
 
-	<%= f.label :period %>
+	<%= f.label :periodo %>
   <%= f.select(:period, [["Invierno", 1], ["Verano", 2], ["Otono", 3]]) %>
 
   
-  <%= f.label :course_id %>
+  <%= f.label :asignatura %>
   <span class="program-field">
   <%= select(:lecture, :course_id, @courses.collect {|c| [ c.name, c.id ] }) %>
   </span>
 
-	<%= f.label :week_day %>
+	<%= f.label :dia %>
 	<%= select(:lecture, :week_day, [["Lunes", 1], ["Martes", 2], ["Miercoles", 3], ["Jueves", 4], ["Viernes", 5], ["Sabado", 6]]) %>
 
-	<%= f.label :lecture_start_time %>
+	<%= f.label :hora %>
 	<%= f.time_select :lecture_start_time, {:minute_step => 30, ampm: true} %>
   <span class="submit-field">
-	<%= f.submit %>
+	<%= f.submit "Crear Asignatura"%>
 	  <span>
 
 	<% end %>
