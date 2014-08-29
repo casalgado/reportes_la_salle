@@ -41,6 +41,7 @@ class LecturesController < ApplicationController
     @lecture = Lecture.find(params[:id])
     @lecture.update_attributes(lecture_params)
     @lecture.save
+    @lecture.update_lecture_days
     redirect_to my_lectures_lecture_path
     
   end

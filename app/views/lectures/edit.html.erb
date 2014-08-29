@@ -10,7 +10,7 @@
 			<li> <span class=" "> Creditos:        </span> <span class="bold"> <%= @course.credits %>  </span> </li>
 		</ul> 
 
-	<% if @lecture.created_at.to_date === Date.today %>
+	<% if Report.where(:user_id => current_user.id, :month_of_report => @lecture.period.period_to_report_month, :year => @lecture.created_at.to_date.year).empty? %>
 		
 		<h3> Editar Horario </h3>
 
@@ -24,6 +24,7 @@
 			<br />
 
 			<%= f.submit "Actualizar"%>
+			<br />
 			<br />
 			<%= link_to "Eliminar", @lecture, method: :delete%>
 		<% end %>

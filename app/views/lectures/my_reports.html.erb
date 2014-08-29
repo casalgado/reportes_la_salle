@@ -34,11 +34,10 @@
 		<% end %>
 	</dl>
 
-
 	<% unless @total_hours_of_class == 0 %>
 	  <p id="total-hours"> 
 	  	Horas totales de <%= "#{Date::MONTHNAMES[@month_of_report.to_i]}"%>:  <%= "#{@total_hours_of_class}" %> </p>
-				<% if (Date.today.mday == 25 || Date.today.mday == 26 || true) && Report.where(:user_id => @user.id, :month_of_report => @month_of_report).empty? %>
+				<% if (Date.today.mday == 25 || Date.today.mday == 26 || true) && Report.where(:user_id => @user.id, :month_of_report => @month_of_report, :year => @lectures.first.created_at.to_date.year).empty? %>
 					<% if current_coordinator %>
 						<p class="p-create-report-button"> Reporte no enviado</p>
 					<% else %>

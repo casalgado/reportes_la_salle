@@ -2,6 +2,7 @@ class LectureDay < ActiveRecord::Base
 
 	belongs_to :lecture
 	belongs_to :report
+	validates_uniqueness_of :lecture, scope: [:date_of_lecture, :time_of_lecture]
 
 	def update_report_month
 		self.month_of_report = self.date_of_lecture.to_report_month

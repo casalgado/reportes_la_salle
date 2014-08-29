@@ -39,20 +39,19 @@ class ReportsController < ApplicationController
     @month  = params[:month_of_report]
     @period = params[:period]
     if params[:in_or_due]
-      @users = User.turned_in_report(@month)
+      @users = User.turned_in_report(@month).sort_by { |u| u.last_name }
       @in_or_due = true
     else
-      @users = User.still_owe_report(@month, @period)
+      @users = User.still_owe_report(@month, @period).sort.sort_by { |u| u.last_name }
     end
   end
 
   def download_report
-    params[:user_id].each do |user_id|
-      @report = Report.find_by(:user_id => user_id, :month_of_report => params[:month_of_report])
+      @report = Report.find_by(:user_id => params[:user_id], :month_of_report => params[:month_of_report])
       @lecture_days = @report.lecture_days
       render :xlsx => "download_report", :filename => "#{Date.new(2001, @report.month_of_report, 12).strftime('%b')} - #{@report.user.last_name}.xlsx"
-    end
   end
+
 
   private
 
@@ -62,12 +61,4 @@ class ReportsController < ApplicationController
   end
 
 end
-
-  # def download_report
-  #   params[:user_id].each do |user_id|
-  #     @report = Report.find_by(:user_id => user_id, :month_of_report => params[:month_of_report])
-  #     @lecture_days = @report.lecture_days
-  #     render :xlsx => "download_report", :filename => "#{Date.new(2001, @report.month_of_report, 12).strftime('%b')} - #{@report.user.last_name}.xlsx"
-  #   end
-  # end
-  # 
+  

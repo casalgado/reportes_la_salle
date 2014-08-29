@@ -2,7 +2,7 @@ class Lecture < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :course
-	has_many   :lecture_days
+	has_many   :lecture_days, :dependent => :destroy
 	
 	# Los siguientes 3 methods generan los lecture days
 
@@ -33,6 +33,14 @@ class Lecture < ActiveRecord::Base
 			start += 1
 		end
 	end
+
+	# Este metodo es para actualizar los LDays cuando la lecture ha sido editada. 
+
+	def update_lecture_days
+		self.lecture_days.each do |day| day.destroy end
+		self.generate_lecture_days
+	end
+
 
 	# Calcula el numero de horas dictadas de esta clase en el mes "month".
 	def hours_in_month(month)

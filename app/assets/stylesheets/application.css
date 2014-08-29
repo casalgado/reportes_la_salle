@@ -40,3 +40,15 @@ body {
 	margin: 10px;
 	width: 100%;
 }
+
+.italic {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.margin-top {
+	margin-top: 3px;
+}
