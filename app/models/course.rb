@@ -8,7 +8,7 @@ class Course < ActiveRecord::Base
 
 	# Este method es para load los courses como objetos en la base de datos. Deberia moverlo a un initialize.
 	def self.load
-		doc = Roo::Excel.new('/Users/carlosalbertosalgadohazbun/Desktop/reportes_la_salle/lib/assets/CourseLibrary.xls')
+		doc = Roo::Excel.new(Rails.root.join('lib/assets/CourseLibrary.xls').to_s)
 		header = doc.row(1)
 			(2..100).each do |count|
 				db_row = doc.row(count)
@@ -31,3 +31,4 @@ class Course < ActiveRecord::Base
 	end
 
 end
+
