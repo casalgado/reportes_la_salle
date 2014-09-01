@@ -63,7 +63,7 @@ group :test do
 
 end
 
-gem :production, :staging do
+group :production, :staging do
 
     gem 'pg'
 

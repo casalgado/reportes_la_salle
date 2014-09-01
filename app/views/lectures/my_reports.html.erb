@@ -16,9 +16,9 @@
 			<dt><%= link_to "#{lecture.course.name}", edit_lecture_path(lecture) %> </dt>
 					<% for day in lecture.lecture_days.where(:month_of_report => @month_of_report) %>
 						<dd class="day_of_lecture_container">
-								<li class="day_of_lecture"> <%= "#{Date::MONTHNAMES[day.date_of_lecture.mon]}" %></li>
-								<li class="day_of_lecture"> <%= "#{day.date_of_lecture.mday}" %></li>
-								<li class="day_of_lecture"> <%= "#{Date::DAYNAMES[day.date_of_lecture.wday]}" %></li>
+								<li class="day_of_lecture">  <%= "#{Date::MONTHNAMES[day.date_of_lecture.mon]}" %></li>
+								<li class="day_of_lecture">  <%= "#{day.date_of_lecture.mday}" %></li>
+								<li class="day_of_lecture">  <%= "#{Date::DAYNAMES[day.date_of_lecture.wday]}" %></li>
 								<li class="day_of_lecture2"> <%= "#{day.time_of_lecture.strftime("%l.%M %P")} - #{
 								(day.time_of_lecture + day.lecture.course.duration.to_i * 3600).strftime("%l.%M %P")}"%></li>
 									<% if Report.where(:user_id => @user.id, :month_of_report => @month_of_report).empty? %>
