@@ -49,7 +49,7 @@ class ReportsController < ApplicationController
   def download_report
       @report = Report.find_by(:user_id => params[:user_id], :month_of_report => params[:month_of_report])
       @lecture_days = @report.lecture_days
-      render :xlsx => "download_report", :filename => "#{Date.new(2001, @report.month_of_report, 12).strftime('%b')} - #{@report.user.last_name}.xlsx"
+      render :xlsx => "download_report", :filename => "#{Date.new(2001, @report.month_of_report, 12).strftime('%b')} - #{@report.user.first_name[0]}#{@report.user.last_name}.xlsx"
   end
 
 
@@ -61,4 +61,23 @@ class ReportsController < ApplicationController
   end
 
 end
+
+  # def download_report
+  #   compressed_filestream = Zip::ZipOutputStream.write_buffer do |zos|
+  #     params[:user_id].each do |user_id|
+  #       @report = Report.find_by(:user_id => user_id, :month_of_report => params[:month_of_report])
+  #       @lecture_days = @report.lecture_days
+  #       content = render_to_string :xlsx => "download_report", :filename => "#{Date.new(2001, @report.month_of_report, 12).strftime('%b')} - #{@report.user.first_name[0]}#{@report.user.last_name}.xlsx"
+  #       zos.put_next_entry("user_#{user_id}.xlsx")
+  #       zos.print content
+  #     end
+  #   end
+  #  compressed_filestream.rewind
+  #  send_data compressed_filestream.read, :filename => 'download_report.zip', :type => "application/zip"
+  # end
+
+
+
+
+
   

@@ -36,7 +36,7 @@ wb.add_worksheet(name: "Reports") do |sheet|
       sheet.add_row [" "," "," "," "," "], :style => phantom, :height => 12
 
 
-   sheet.column_widths 10, 5, 20, 20, 12
+   sheet.column_widths 10, 5, 20, 28, 12
 
    sheet.merge_cells("A1:E1")
    sheet.merge_cells("B3:C3")
