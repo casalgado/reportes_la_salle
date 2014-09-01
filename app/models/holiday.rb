@@ -1,6 +1,6 @@
 class Holiday < ActiveRecord::Base
 
-	def self.load_holidays
+	def self.load
 		years = ['2014-','2015-','2016-','2017-','2018-','2019-','2020-','2021-','2022-', '2023-', '2024-']
 		
 		flexible_holidays = ["01-06", "03-19", "06-29", "08-15", "10-12", "11-01", "11-11"]
@@ -31,8 +31,6 @@ class Holiday < ActiveRecord::Base
 					date = easter + rflex
 						Holiday.new(:date => date.move_holiday).save
 				end
-				debugger
-				vare = 'do it'
 
 			end
 	end
