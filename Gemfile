@@ -30,8 +30,6 @@ gem "spreadsheet", "0.9.8"
 
 gem 'roo', '~> 1.13.2'
 
-gem 'mailcatcher'
-
 gem 'debugger'
 
 gem 'axlsx', '~> 2.0.1'
@@ -45,6 +43,8 @@ gem 'rubyzip', '~> 1.0.0'
 gem 'when_easter', '~> 0.3.1'
 
 group :development, :test do
+
+	gem 'mailcatcher'
 
 	gem "rspec-rails", "~> 2.10.1"
 
