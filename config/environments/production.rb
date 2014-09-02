@@ -82,9 +82,21 @@ ReportesLaSalle::Application.configure do
   config.action_mailer.default_url_options = {:host => 'reportedigital.herokuapp.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  :address => "127.0.0.1",
-  :port    => 25,
-  :domain  => 'reportedigital.herokuapp.com'
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: "reportedigital.herokuapp.com",
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: 'lcireportedigital@gmail.com',
+  password: '1Awareness'
 }
 
+  # config.action_mailer.default_url_options = { :host => 'reportedigital.herokuapp.com' }
+  # # ActionMailer Config
+  # # Setup for production - deliveries, no errors raised
+  # config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+  
 end
