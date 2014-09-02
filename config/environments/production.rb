@@ -77,4 +77,14 @@ ReportesLaSalle::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Agregado por mi.
+  config.action_mailer.default_url_options = {:host => 'reportedigital.herokuapp.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :address => "127.0.0.1",
+  :port    => 25,
+  :domain  => 'reportedigital.herokuapp.com'
+}
+
 end
