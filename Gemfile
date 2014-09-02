@@ -30,6 +30,8 @@ gem "spreadsheet", "0.9.8"
 
 gem 'roo', '~> 1.13.2'
 
+gem 'mailcatcher'
+
 gem 'debugger'
 
 gem 'axlsx', '~> 2.0.1'
@@ -50,7 +52,7 @@ group :development, :test do
 
 	gem "guard-rspec", "~> 0.7.0"
 
-    gem 'sqlite3'
+  gem 'sqlite3'
 
 end
 

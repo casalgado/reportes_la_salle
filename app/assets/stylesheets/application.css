@@ -12,6 +12,28 @@
  *= require_tree .
  */
 
+.notice {
+	float: center;
+	width: 500px;
+	text-align: center;
+	margin: 20px auto auto auto;
+
+	color: #259433;
+	padding: 10px 60px 10px 60px;
+	font-size: 80%;
+}
+
+.error {
+	float: center;
+	width: 500px;
+	text-align: center;
+	margin: 20px auto auto auto;
+
+	color: #B82203;
+	padding: 10px 60px 10px 60px;
+	font-size: 80%;
+}
+
 a:link, a:visited, a:active {
   color: #333333;
   text-decoration: none;

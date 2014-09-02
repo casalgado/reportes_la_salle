@@ -1,7 +1,7 @@
 
 Devise.setup do |config|
 
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'lcireportedigital@gmail.com'
 
   require 'devise/orm/active_record'
 
@@ -13,7 +13,7 @@ Devise.setup do |config|
 
   config.stretches = Rails.env.test? ? 1 : 10
 
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   config.password_length = 4..128
 
@@ -22,6 +22,8 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   config.scoped_views = true
+
+  #config.email_regexp = /\A([\w\.%\+\-]+)@lci\.edu.co\z/i
 
   config.warden do |manager|
     manager.failure_app = CustomFailure

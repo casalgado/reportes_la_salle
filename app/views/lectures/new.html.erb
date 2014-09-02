@@ -1,6 +1,11 @@
+
+
+
+
 <h2  class="page-title">Agregar Asignatura</h2>
 
 <%= render "lectures/new_mini_header" %>	
+  
 
 
 <div class="form-for-new">
@@ -31,3 +36,11 @@
 	<% end %>
 
 </div>
+
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if flash[:alert] %>
+  <div class="error"><%= flash[:alert] %></div>
+	<% end %>

@@ -9,16 +9,26 @@ class LecturesController < ApplicationController
     @lecture = Lecture.new(period: 2)
     @lecture.period = 1 if (Time.now.month < 5)
     @lecture.period = 3 if (Time.now.month > 8)
-    @program  = params[:program] || "Diseño Grafico"
+    @programs = Program.all
+
+    @program  = params[:program] || "1"
     @semester = params[:semester] || "1"
-    @courses = Course.filter_courses(@program, @semester)
+
+    @semesters = Program.find(@program).semester_array
+    @courses = Course.filter_courses(@program, @semester) 
   end
 
   def create
     @lecture = current_user.lectures.new(lecture_params)
-    @lecture.save
-    @lecture.generate_lecture_days
-    redirect_to :back
+    if Report.where(:user_id => current_user.id, :month_of_report => @lecture.period.period_to_report_month, :year => Date.today.year).empty?
+      if @lecture.save
+        @lecture.generate_lecture_days
+        flash[:notice] = "Asignatura Creada"
+      end
+    else
+      flash[:alert] = "No se pudo crear asignatura ya que existe reporte para este periodo"
+  end
+    redirect_to new_lecture_path
   end
 
   def index
@@ -48,8 +58,10 @@ class LecturesController < ApplicationController
 
   def destroy
     @lecture = Lecture.find(params[:id])
-    @lecture.destroy
-    redirect_to my_lectures_lecture_path
+    if @lecture.destroy
+      flash[:notice] = "Asignatura Eliminada Exitosamente"
+      redirect_to my_lectures_lecture_path
+    end
   end
 
   def show

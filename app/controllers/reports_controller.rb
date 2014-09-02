@@ -9,9 +9,11 @@ class ReportsController < ApplicationController
 
   def create
     @report = current_user.reports.new(report_params)
-    @report.save
-    @lecture_days = LectureDay.update_report_id(@report.year, @report.period, @report.month_of_report, current_user.id, @report.id)
-    redirect_to :back
+    if @report.save
+       @lecture_days = LectureDay.update_report_id(@report.year, @report.period, @report.month_of_report, current_user.id, @report.id)
+       flash[:notice] = "Reporte ha sido Enviado"
+       redirect_to my_reports_lecture_path(:id => current_user.id, :period => @report.period, :month_of_report => @report.month_of_report)
+     end
   end
 
   def index

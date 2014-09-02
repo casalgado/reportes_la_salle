@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827174906) do
+ActiveRecord::Schema.define(version: 20140901025946) do
 
   create_table "coordinators", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140827174906) do
   add_index "coordinators", ["reset_password_token"], name: "index_coordinators_on_reset_password_token", unique: true
 
   create_table "courses", force: true do |t|
-    t.string   "program"
+    t.integer  "program_id"
     t.string   "name"
     t.integer  "semester"
     t.integer  "duration"
@@ -45,8 +45,6 @@ ActiveRecord::Schema.define(version: 20140827174906) do
   end
 
   create_table "holidays", force: true do |t|
-    t.integer  "year"
-    t.integer  "day"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date"
@@ -75,6 +73,13 @@ ActiveRecord::Schema.define(version: 20140827174906) do
     t.datetime "updated_at"
   end
 
+  create_table "programs", force: true do |t|
+    t.string   "name"
+    t.integer  "semesters"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "reports", force: true do |t|
     t.integer  "user_id"
     t.integer  "year"
@@ -95,12 +100,16 @@ ActiveRecord::Schema.define(version: 20140827174906) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

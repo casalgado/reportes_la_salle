@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :reports
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   validates :first_name, presence: true, length: { minimum: 4}
   validates :last_name , presence: true, length: { minimum: 4}
