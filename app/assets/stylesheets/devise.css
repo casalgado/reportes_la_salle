@@ -10,10 +10,13 @@
 	left: -25px;
 }
 
-.devise-shared-links a {
+.devise-shared-links  {
 	font-size: 80%;
 }
 
+span.devise-shared-links {
+		font-style: italic;
+}
 .devise-child {
 	position: relative;
 	left: 30px;

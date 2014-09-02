@@ -50,11 +50,11 @@ class Lecture < ActiveRecord::Base
 	# Filtra Lectures en LecturesController/index.
 
 	def self.per_period_program(period, program)
-		Lecture.where(:course_id => [Course.where(:program => program).map(&:id)], :period => period, year: Date.today.year)
+		Lecture.where(:course_id => [Course.where(:program_id => program).map(&:id)], :period => period, year: Date.today.year)
 	end
 
 	def self.per_period_program_semester(period, program, semester)
-		Lecture.where(:period => period, year: Date.today.year, :course_id => [Course.where(:program => program, :semester => semester).map(&:id)])
+		Lecture.where(:period => period, year: Date.today.year, :course_id => [Course.where(:program_id => program, :semester => semester).map(&:id)])
 		
 	end
 

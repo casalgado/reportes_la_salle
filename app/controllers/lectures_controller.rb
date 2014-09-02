@@ -28,11 +28,12 @@ class LecturesController < ApplicationController
     else
       flash[:alert] = "No se pudo crear asignatura ya que existe reporte para este periodo"
   end
-    redirect_to new_lecture_path
+    redirect_to new_lecture_path(:program => @lecture.course.program.id, :semester => @lecture.course.semester)
   end
 
   def index
-    @program  = params[:program] || "Diseño Grafico"
+    @programs = Program.all
+    @program  = params[:program] || "1"
     @semester = params[:semester]
     @period   = params[:period] || Date.today.to_period.to_s
       if @semester == nil
@@ -40,6 +41,7 @@ class LecturesController < ApplicationController
       else
         @lectures = Lecture.per_period_program_semester(@period, @program, @semester)
       end
+    @semesters = Program.find(@program).semester_array
   end
 
   def edit

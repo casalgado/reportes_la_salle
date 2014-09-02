@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   def print_faculties
     faculties = []
     self.lectures.each do |lecture|
-      faculties << lecture.course.program
+      faculties << lecture.course.program.name
     end
     faculties.uniq.join(', ')
   end

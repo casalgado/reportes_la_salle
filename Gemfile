@@ -16,6 +16,8 @@ gem 'turbolinks'
 
 gem 'jbuilder', '~> 1.2'
 
+gem 'figaro'
+
 group :doc do
 
   gem 'sdoc', require: false

@@ -87,8 +87,8 @@ ReportesLaSalle::Application.configure do
   domain: "reportedigital.herokuapp.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: 'lcireportedigital@gmail.com',
-  password: '1Awareness'
+  user_name: ENV["GMAIL_USERNAME"],
+  password:  ENV["GMAIL_PASSWORD"]
 }
 
   # config.action_mailer.default_url_options = { :host => 'reportedigital.herokuapp.com' }
