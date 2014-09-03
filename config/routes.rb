@@ -7,6 +7,7 @@ ReportesLaSalle::Application.routes.draw do
   devise_for :users
 
   devise_scope :user do
+    get 'home' => "devise/sessions#home", as: :home
     root to: "devise/sessions#new"
   end
 

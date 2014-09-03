@@ -2,13 +2,19 @@
 <div class="header-top">
 
 	<div class="logo-header">
-		<%= image_tag('LogoLCI.png') %>
-		<!-- <img src="/assets/LogoLCI.png" alt="Logo LCI Barranquilla" title="Logo LCI Barranquilla" /> -->
+		<%= link_to(image_tag('LogoLCI.png'), root_path) %>
 	</div>
 
 	<div class="flag-container">
-		<%= image_tag('CanFlag.jpg') %>
-		<%= image_tag('ColFlag.jpg') %>
+		<%= link_to(image_tag('CanFlag.jpg'),       'http://www.collegelasalle.com/' ) %>
+		<%= link_to(image_tag('ColFlag.jpg'),       'http://www.lci.edu.co/' ) %>
+<!-- 		<%= link_to(image_tag('PanamaFlag.jpg'),    'http://www.lcipanamacity.com/' ) %>
+		<%= link_to(image_tag('MexFlag.jpg'),       'http://www.lcimonterrey.com.mx/' ) %>
+		<%= link_to(image_tag('SpainFlag.jpg'),     'http://fdmoda.com/' ) %>
+		<%= link_to(image_tag('TurkeyFlag.jpg'),    'http://www.lasalle.com.tr/' ) %>
+		<%= link_to(image_tag('MoroccoFlag.jpg'),   'http://www.collegelasalle.ma/' ) %>
+		<%= link_to(image_tag('IndonesiaFlag.jpg'), 'http://www.lasallecollege.ac.id/' ) %>
+		<%= link_to(image_tag('TunisiaFlag.jpg'),   'http://www.clasalle-tunis.com/' ) %> -->
 	</div>
 
 </div>
