@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def after_confirmation
-    sign_in(self)
+    redirect_to home_path
   end
 
 end
