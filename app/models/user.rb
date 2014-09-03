@@ -42,8 +42,5 @@ class User < ActiveRecord::Base
     faculties.uniq.join(', ')
   end
 
-  def after_confirmation
-    redirect_to home_path
-  end
 
 end
