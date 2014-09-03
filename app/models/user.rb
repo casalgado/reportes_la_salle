@@ -42,5 +42,8 @@ class User < ActiveRecord::Base
     faculties.uniq.join(', ')
   end
 
+  def after_confirmation
+    sign_in(self)
+  end
 
 end
