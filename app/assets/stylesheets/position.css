@@ -1,0 +1,20 @@
+
+.float-center {
+	float: center;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.auto-overflow {
+	overflow: auto;
+}
+
+.centered-position {
+	margin: 10px auto auto auto;
+}

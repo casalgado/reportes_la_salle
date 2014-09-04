@@ -1,0 +1,16 @@
+
+.italic {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.center {
+	text-align: center;
+}
+
+.size-80p {
+	font-size: 80%;
+}

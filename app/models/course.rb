@@ -12,7 +12,7 @@ class Course < ActiveRecord::Base
 	def self.load
 		doc = Roo::Excel.new(Rails.root.join('lib/assets/CourseLibrary.xls').to_s)
 		header = doc.row(1)
-			(2..100).each do |count|
+			(2..236).each do |count|
 				db_row = doc.row(count)
 				params = Hash[header.zip db_row]
 				course = Course.new(params)
@@ -31,6 +31,16 @@ class Course < ActiveRecord::Base
       Course.where(:program_id => program, :semester => semester)
     end
 	end
+
+	# Produces an array of all course names
+
+	def self.course_names
+		self.all.collect {|x| x.name }.compact
+	end
+
+
+
+
 
 end
 

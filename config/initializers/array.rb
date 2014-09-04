@@ -8,5 +8,10 @@ class Array
     hours
   end
 
+  # Returns Duplicates in an array
+
+  def return_duplicates
+  	self.find_all { |e| self.count(e) > 1 }.uniq.sort
+  end
 
 end

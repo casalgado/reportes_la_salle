@@ -29,4 +29,16 @@ class Program < ActiveRecord::Base
 		array
 	end
 
+	# Los siguientes metodos son para calcular los indicadores
+
+	def area_course_hash
+		area_array = self.courses.collect {|x| x.area }.uniq.sort
+		course_array = []
+		area_array.each do |area|
+			course_array << self.courses.where(:area => area).count
+		end
+		Hash[area_array.zip course_array]
+	end
+
+
 end

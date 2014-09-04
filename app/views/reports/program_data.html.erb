@@ -1,0 +1,33 @@
+
+<% for program in @programs %>
+	<div class="p-data-container width-750 heigth-300 auto-overflow centered-position">
+		<h3 class="center"> <%= program.name %>  </h3>
+			<div class="area-course-hash-container width-300 float-left">
+				 	<ul>
+						<li class="width-150 float-left italic size-80p"> Areas </li>
+						<li class="width-100  float-left italic size-80p"> # Asign.</li>
+					</ul>
+					<br />
+				<% for area_course_pair in program.area_course_hash %>
+					<ul class="auto-overflow">
+						<li class="width-150 float-left"> <%= area_course_pair[0] %></li>
+						<li class="width-50  float-left"> <%= area_course_pair[1] %></li>
+					</ul>
+					<% end %>
+					 	<ul>
+						<li class="width-150 float-left bold"> Total</li>
+						<li class="width-50 float-left bold">  <%= program.courses.count %> </li>
+					</ul>
+			</div>
+
+			<div class = "gchart-container width-400 float-right">
+				<%= image_tag(Gchart.pie( :size => '400x200', 
+    			  :theme => :pastel,
+            :legend => program.area_course_hash.keys,
+            :axis_with_labels => [['x'], ['y']],
+            :axis_labels => [[program.area_course_hash.courses_per_area(program)]],
+            :data => program.area_course_hash.values)) %>
+			</div>
+	</div>
+	<br />
+<% end %>

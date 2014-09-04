@@ -35,6 +35,8 @@ ReportesLaSalle::Application.routes.draw do
   resources :reports do
     get 'reports_list', :on => :member
     get 'download_report', :on => :collection
+    get 'program_data', :on => :collection
+    get 'course_data', :on => :collection
   end
 
   

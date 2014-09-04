@@ -1,0 +1,24 @@
+
+<% for course in @courses %>
+	<div class="p-data-container width-750 heigth-300 auto-overflow centered-position">
+		<h3 class="center"> <%= course %>  </h3>
+			<div class="area-course-hash-container width-300 float-left">
+				 	<ul>
+						<li class="width-150 float-left italic size-80p" > Programas </li>
+						<li class="width-50  float-left italic size-80p" > Cuatrimestre </li>
+					</ul>
+					<br />
+				<% for program in course.belongs_to_programs %>
+					<ul class="auto-overflow">
+						<li class="width-150 float-left"> <%= program.name %></li>
+						<li class="width-50 float-left"> <%= program.courses.find_by(:name => course).semester %></li>
+					</ul>
+					<% end %>
+			</div>
+
+			<div class = "gchart-container width-400 float-right">
+				
+			</div>
+	</div>
+	<br />
+<% end %>

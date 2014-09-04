@@ -49,9 +49,22 @@ class ReportsController < ApplicationController
   end
 
   def download_report
-      @report = Report.find_by(:user_id => params[:user_id], :month_of_report => params[:month_of_report])
-      @lecture_days = @report.lecture_days
-      render :xlsx => "download_report", :filename => "#{Date.new(2001, @report.month_of_report, 12).strftime('%b')} - #{@report.user.first_name[0]}#{@report.user.last_name}.xlsx"
+    @report = Report.find_by(:user_id => params[:user_id], :month_of_report => params[:month_of_report])
+    @lecture_days = @report.lecture_days
+    render :xlsx => "download_report", :filename => "#{Date.new(2001, @report.month_of_report, 12).strftime('%b')} - #{@report.user.first_name[0]}#{@report.user.last_name}.xlsx"
+  end
+
+  def program_data
+    @programs = Program.all
+    @chart = Gchart.pie( :size => '200x300', 
+              :title => 'example title',
+              :bg => 'efefef',
+              :legend => ['first data set label', 'second data set label'],
+              :data => [10, 30, 120, 45, 72])
+  end
+
+  def course_data
+    @courses = Course.course_names.return_duplicates.sort
   end
 
 

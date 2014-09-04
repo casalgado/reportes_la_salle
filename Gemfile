@@ -16,8 +16,6 @@ gem 'turbolinks'
 
 gem 'jbuilder', '~> 1.2'
 
-gem 'figaro'
-
 group :doc do
 
   gem 'sdoc', require: false
@@ -28,6 +26,10 @@ end
 
 gem 'devise'
 
+gem "googlecharts", :require => "gchart"
+
+gem 'figaro'
+
 gem "spreadsheet", "0.9.8"
 
 gem 'roo', '~> 1.13.2'
@@ -37,8 +39,6 @@ gem 'debugger'
 gem 'axlsx', '~> 2.0.1'
 
 gem 'axlsx_rails', '~> 0.2.0'
-
-# gem 'acts_as_xlsx', '~>1.0.6'
 
 gem 'rubyzip', '~> 1.0.0'
 
