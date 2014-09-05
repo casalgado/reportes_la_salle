@@ -1,21 +1,21 @@
 <h2 class="page-title">Mis Clases</h2>
 
+<% unless @lectures.empty? %>
 
-<div class="page-content">
-	<div class="my-lectures-container">
-		<% for lecture in @lectures %>
-			<ul>
-				<li class="my-lectures-name"> <%= link_to "#{lecture.course.name}", edit_lecture_path(lecture) %></li>
-				<li class="my-lectures"> <%= Date::DAYNAMES[lecture.week_day] %></li>
-				<li class="my-lectures"> <%= lecture.lecture_start_time.strftime("%I:%M %P") %></li>
-			</ul>
-		<% end %>
+	<div class="page-content">
+		<div class="my-lectures-container">
+			<% for lecture in @lectures %>
+				<ul>
+					<li class="my-lectures-name"> <%= link_to "#{lecture.course.name}", edit_lecture_path(lecture) %></li>
+					<li class="my-lectures"> <%= Date::DAYNAMES[lecture.week_day] %></li>
+					<li class="my-lectures"> <%= lecture.lecture_start_time.strftime("%I:%M %P") %></li>
+				</ul>
+			<% end %>
+		</div>
 	</div>
-</div>
 
+	<% if flash[:notice] %>
+	  <div class="notice"><%= flash[:notice] %></div>
+	<% end %>
 
-
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
 <% end %>
-

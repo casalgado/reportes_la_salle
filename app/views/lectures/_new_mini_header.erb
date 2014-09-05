@@ -2,21 +2,23 @@
 
 
 <div class="programs-mini-navs">
-<ul>
-	<div class="programs-mini-header">
-		<% for program in @programs %>
-			<li class= <%= @program == program.id.to_s ? "bold_month" : 'regular_month' %> >
-			<%= link_to "#{program.name}", new_lecture_path(:program => program.id, :semester => @semester) %> </li>
-		<% end %>
-	</div>
-</ul
+	<ul>
+		<div class="programs-mini-header">
+			<% for program in @programs %>
+				<li class= <%= @program == program.id.to_s ? "bold_month" : 'regular_month' %> >
+				<%= link_to "#{program.name}", new_lecture_path(:program => program.id, :semester => @semester) %> </li>
+			<% end %>
+		</div>
+	</ul
+<br />
+	<ul>
+		<div class="programs-mini-header-months">
+			<% for semester in @semesters %>
+				<li class= <%= @semester == "#{semester}" ? "bold_month" : 'regular_month' %> >
+		 		<%= link_to "#{semester}", new_lecture_path(:semester => semester, :program => @program) %> </li>
+			<% end %>
+		</div>
+	</ul>
 
-<ul>
-	<div class="programs-mini-header-months">
-		<% for semester in @semesters %>
-			<li class= <%= @semester == "#{semester}" ? "bold_month" : 'regular_month' %> >
-	 		<%= link_to "#{semester}", new_lecture_path(:semester => semester, :program => @program) %> </li>
-		<% end %>
-	</div>
-</ul>
+</div>
 
