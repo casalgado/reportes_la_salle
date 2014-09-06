@@ -12,8 +12,16 @@
 
 <% elsif coordinator_signed_in? %> 
 
-  <li> <%= link_to("Reportes", reports_path) %> </li>
   <li> <%= link_to('Asignaturas', lectures_path) %> </li>
+  <li> <%= link_to("Reportes", reports_path) %> </li>
+  <li> <%= link_to("Indicadores", '#') %> 
+    <ul>
+      <li> <%= link_to("Programas", program_data_reports_path) %> </li>
+      <li> <%= link_to("Cursos",     course_data_reports_path) %> </li>
+      <li> <%= link_to("Docentes",  teacher_data_reports_path) %> </li>
+    </ul>
+  </li>
+  
 
 <% else %>
 
