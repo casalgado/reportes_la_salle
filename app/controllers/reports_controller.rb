@@ -67,6 +67,10 @@ class ReportsController < ApplicationController
     @courses = Course.course_names.return_duplicates.sort
   end
 
+  def teacher_data
+    
+  end
+
 
   private
 

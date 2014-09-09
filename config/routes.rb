@@ -2,6 +2,9 @@ ReportesLaSalle::Application.routes.draw do
   
 
   
+  get "static_pages/home"
+  get "static_pages/mail_confirmation"
+  
   # devise routes
 
   devise_for :users

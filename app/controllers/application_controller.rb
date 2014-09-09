@@ -12,11 +12,7 @@ class ApplicationController < ActionController::Base
 	end
 
   def after_sign_up_path_for(resource)
-    if current_user
-      my_lectures_lecture_path(resource)
-    else
-      reports_path
-    end
+    static_pages_mail_confirmation_path
   end
 
 

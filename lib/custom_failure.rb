@@ -2,7 +2,7 @@
 
     def redirect_url
       return super unless [:coordinator].include?(scope) #make it specific to a scope
-       no_access_path
+       static_pages_mail_confirmation_path
     end
 
 
