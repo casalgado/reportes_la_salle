@@ -1,5 +1,9 @@
-<div class="devise-signin-container">
-	<div class="devise-signin">
+
+
+		<% unless current_user || current_coordinator %>
+		<div class="devise-signin-container">
+			<div class="devise-signin">
+
 		<h2>Iniciar Sesion</h2>
 
 
@@ -29,6 +33,11 @@
 					<%= link_to('Soy Coordinador', new_coordinator_session_path)  %>
 				</div>
 		</div>
+
+		<% else %>
+
+
+		<% end %>
 	
 
 	<div class="welcome-image">

@@ -1,20 +1,14 @@
 
 <% if user_signed_in? %>
-  <li>
-  <%= link_to('Agregar Clase', new_lecture_path) %>        
-  </li>
-  <li>
-  <%= link_to("Mis Clases", my_lectures_lecture_path(current_user)) %>
-  </li>
-    <li>
-  <%= link_to("Reportes", my_reports_lecture_path(current_user)) %>
-  </li>
+
+  <li> <%= link_to('Agregar Clase',                    new_lecture_path) %> </li>
+  <li> <%= link_to("Mis Clases", my_lectures_lecture_path(current_user)) %> </li>
+  <li> <%= link_to("Reportes",    my_reports_lecture_path(current_user)) %> </li>
 
 <% elsif coordinator_signed_in? %> 
 
-  
   <li> <%= link_to('Asignaturas', lectures_path) %> </li>
-  <li> <%= link_to("Reportes", reports_path) %> </li>
+  <li> <%= link_to("Reportes",     reports_path) %> </li>
   <li> <%= link_to("Indicadores", '#') %> 
     <ul>
       <li> <%= link_to("Programas", program_data_reports_path) %> </li>
@@ -24,7 +18,6 @@
   </li>
   <li> <%= link_to('Salones', '#') %> </li>
   
-
 <% else %>
 
   <li>

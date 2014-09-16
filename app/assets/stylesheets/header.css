@@ -11,7 +11,7 @@
 
 #dropdown ul li:hover ul li {
 	display: block;
-	background-color: #005978;
+	background-color: #483a00;
 	padding: 10px 10px 10px 10px;
 	margin-left: 155px;
 
@@ -23,21 +23,13 @@
 	height: 100px;
 }
 
-.flag-container {
-	float: right;
-	width: 150;
-	margin-top: 10px;
-}
 
-.flag-container img {
-	width: 50px;
-	height: 31px;
-	margin-left: 10px;
-}
+
 
 .logo-header {
-	float: left;
-	width: 200px;
+	float: center;
+	width: 400px;
+	margin: auto auto auto auto;
 }
 
 .logo-header img {
@@ -48,7 +40,7 @@
 	width: 940px;
 	margin: 10px;
 /*	border: 2px solid #cecece;*/
-	background-color: #005978;
+	background-color: #483a00;
 	overflow: auto;
 	width: 100%;
 }
@@ -67,7 +59,7 @@
 .navbar a:link, .navbar a:visited, .navbar a:active {
 	font-family: Helvetica;
 	font-weight: lighter;
-  color: #ffffff;
+  color: #eaeaea;
   text-decoration: none;
 }
 
