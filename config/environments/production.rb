@@ -79,12 +79,12 @@ ReportesLaSalle::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Agregado por mi.
-  config.action_mailer.default_url_options = {:host => 'reportedigital.herokuapp.com'}
+  config.action_mailer.default_url_options = {:host => 'informedigital.herokuapp.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,
-  domain: "reportedigital.herokuapp.com",
+  domain: "informedigital.herokuapp.com",
   authentication: "plain",
   enable_starttls_auto: true,
   user_name: ENV["GMAIL_USERNAME"],
