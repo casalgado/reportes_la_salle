@@ -1,7 +1,7 @@
 
 Devise.setup do |config|
 
-  config.mailer_sender = 'lcireportedigital@gmail.com'
+  config.mailer_sender = 'informedigital.app@gmail.com'
 
   require 'devise/orm/active_record'
 
