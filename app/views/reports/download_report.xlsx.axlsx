@@ -20,7 +20,7 @@ wb.add_worksheet(name: "Reports") do |sheet|
 		sheet.add_row ["NOMBRE:", "#{@report.user.first_name} #{@report.user.last_name}", "", "FECHA DE ENTREGA:", "#{Date.today.strftime('%d %b %Y')}"], :style => namenfac, :height => 27
  		sheet.add_row ["FACULTAD:", "#{@report.user.print_faculties}", " ", " ", " "], :style => namenfac, :height => 27
  		sheet.add_row [" "," "," "," "," "], :style => phantom, :height => 12
- 		sheet.add_row ["FECHA DEL:", "", "#{Date.new(Date.today.year, @report.month_of_report.to_i-1, 26).strftime('%d %b %Y')}", "HASTA:", "#{Date.new(Date.today.year, @report.month_of_report.to_i, 25).strftime('%d %b %Y')}"], :style => fecha_de
+ 		sheet.add_row ["FECHA DEL:", "", "#{Date.new(Date.today.year, (@report.month_of_report.to_i-1).no_zero, 26).strftime('%d %b %Y')}", "HASTA:", "#{Date.new(Date.today.year, @report.month_of_report.to_i, 25).strftime('%d %b %Y')}"], :style => fecha_de
  		sheet.add_row [" "," "," "," "," "], :style => phantom, :height => 12
  		sheet.add_row ["FECHA", " ", "HORARIO", "MATERIA", "No. DE HORAS"], :style => table_header
 

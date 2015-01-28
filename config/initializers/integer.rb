@@ -10,4 +10,8 @@ class Integer
   	end
   end
 
+  def no_zero
+  	12 if self == 0
+  end
+
 end
